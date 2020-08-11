@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         this.districts.setLayoutManager(mLayoutManager);
 
-        adapter = new DistrictAdapter(districts);
+        adapter = new DistrictAdapter(this, districts);
         this.districts.setAdapter(adapter);
 
 

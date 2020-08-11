@@ -1,19 +1,24 @@
 package com.example.rybovnicek;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DistrictAdapter extends RecyclerView.Adapter {
 
+    private Context context;
     private ArrayList<District> districts;
 
     @NonNull
@@ -24,11 +29,21 @@ public class DistrictAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         District district = districts.get(position);
 
         ((ViewHolder) holder).name.setText(district.getName());
         ((ViewHolder) holder).distance.setText(String.format("%d km", district.getDistance()));
+
+        ((ViewHolder) holder).layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DistrictActivity.class);
+                intent.putExtra("district", districts.get(position));
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -40,7 +55,8 @@ public class DistrictAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public DistrictAdapter(ArrayList<District> districts) {
+    public DistrictAdapter(Context context, ArrayList<District> districts) {
+        this.context = context;
         this.districts = districts;
     }
 
@@ -48,12 +64,14 @@ public class DistrictAdapter extends RecyclerView.Adapter {
         public final View view;
         public final TextView name;
         public final TextView distance;
+        public final ConstraintLayout layout;
 
         public ViewHolder(View view) {
             super(view);
             this.view = view;
             name = view.findViewById(R.id.tvDistrictName);
             distance = view.findViewById(R.id.tvDistance);
+            layout = view.findViewById(R.id.listItemLayout);
         }
 
     }

@@ -1,6 +1,8 @@
 package com.example.rybovnicek;
 
-public class District {
+import java.io.Serializable;
+
+public class District implements Serializable {
 
     private String name;
     private int distance;
@@ -55,4 +57,6 @@ public class District {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
+
 }
