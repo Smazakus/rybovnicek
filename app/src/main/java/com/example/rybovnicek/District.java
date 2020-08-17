@@ -1,21 +1,19 @@
 package com.example.rybovnicek;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 public class District implements Serializable {
 
     private String name;
+    private String link;
     private int distance;
-    private String description;
-    private String latitude;
-    private String longitude;
+    private List<List<Float>> coords;
 
-    public District(String name, int distance, String description, String latitude, String longitude) {
+    public District(String name, int distance) {
         this.name = name;
         this.distance = distance;
-        this.description = description;
-        this.latitude = latitude;
-        this.longitude = longitude;
     }
 
     public String getName() {
@@ -34,29 +32,11 @@ public class District implements Serializable {
         this.distance = distance;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public List<List<Float>> getCoords() { return coords; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public void setCoords(List<List<Float>> coords) { this.coords = coords; }
 
-    public String getLatitude() {
-        return latitude;
-    }
+    public String getLink() { return link; }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-
+    public void setLink(String link) { this.link = link; }
 }
