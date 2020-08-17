@@ -8,7 +8,7 @@ public class District implements Serializable {
 
     private String name;
     private String link;
-    private int distance;
+    private double distance;
     private List<List<Float>> coords;
 
     public District(String name, int distance) {
@@ -24,11 +24,9 @@ public class District implements Serializable {
         this.name = name;
     }
 
-    public int getDistance() {
-        return distance;
-    }
+    public double getDistance() { return distance; }
 
-    public void setDistance(int distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 

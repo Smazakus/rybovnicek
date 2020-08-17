@@ -33,7 +33,7 @@ public class DistrictAdapter extends RecyclerView.Adapter {
         District district = districts.get(position);
 
         ((ViewHolder) holder).name.setText(district.getName());
-        ((ViewHolder) holder).distance.setText(String.format("%d km", district.getDistance()));
+        ((ViewHolder) holder).distance.setText(String.format("%.2f km", district.getDistance()));
 
         ((ViewHolder) holder).layout.setOnClickListener(new View.OnClickListener() {
             @Override
