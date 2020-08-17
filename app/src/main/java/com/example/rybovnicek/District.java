@@ -2,12 +2,12 @@ package com.example.rybovnicek;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 public class District implements Serializable {
 
     private String name;
     private String link;
+    private String regNum;
     private double distance;
     private List<List<Float>> coords;
 
@@ -16,9 +16,7 @@ public class District implements Serializable {
         this.distance = distance;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
@@ -37,4 +35,19 @@ public class District implements Serializable {
     public String getLink() { return link; }
 
     public void setLink(String link) { this.link = link; }
+
+    public String getRegNumber() { return regNum; }
+
+    public void setRegNumber(String regNum) { this.regNum = regNum; }
+
+    @Override
+    public String toString() {
+        return "District{" +
+                "name='" + name + '\'' +
+                ", link='" + link + '\'' +
+                ", regNum=" + regNum +
+                ", distance=" + distance +
+                ", coords=" + coords +
+                '}';
+    }
 }

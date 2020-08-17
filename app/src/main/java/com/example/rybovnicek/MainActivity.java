@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     private void loadDistrictsByLocation(Location location) {
 
         String url = "https://sycakovo.krumpac.net/findDistrict/?lat=" + String.valueOf(location.getLatitude()) + "&lon=" + String.valueOf(location.getLongitude());
-        Log.d(TAG, url);
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

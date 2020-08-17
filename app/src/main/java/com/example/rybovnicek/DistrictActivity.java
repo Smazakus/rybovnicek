@@ -1,7 +1,11 @@
 package com.example.rybovnicek;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,25 +17,43 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 public class DistrictActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private TextView name;
-    private MapView map;
+    TextView tvName;
+    TextView tvDistrictNumber;
+    MapView map;
+    Button btnLink;
+
+    District district;
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
+    private static final String TAG = "DistrictActivity";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_district);
 
-        name = (TextView) findViewById(R.id.tvName);
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvDistrictNumber = (TextView) findViewById(R.id.tvDistrictNumber);
+        btnLink = (Button) findViewById(R.id.btnDetail);
 
         if (getIntent().hasExtra("district")) {
-            District d = (District) getIntent().getSerializableExtra("district");
-            name.setText(d.getName());
+            district = (District) getIntent().getSerializableExtra("district");
+            if (district == null) {
+                return;
+            }
+
+            tvName.setText(district.getName());
+            if (district.getRegNumber() != null){
+                tvDistrictNumber.setText(String.format(getString(R.string.ev_number), district.getRegNumber()));
+            }
         }
 
         //MAP PART
@@ -43,6 +65,15 @@ public class DistrictActivity extends AppCompatActivity implements OnMapReadyCal
         map.onCreate(mapViewBundle);
 
         map.getMapAsync(this);
+
+    }
+
+    public void linkToDistrict(View v){
+
+        if (district != null){
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(district.getLink()));
+            startActivity(i);
+        }
 
     }
 
@@ -79,11 +110,28 @@ public class DistrictActivity extends AppCompatActivity implements OnMapReadyCal
 
     @Override
     public void onMapReady(GoogleMap map) {
-        LatLng lidicka = new LatLng(49.201054, 16.607977);
-        LatLng tugendhad = new LatLng(49.207285, 16.616095);
-        map.addMarker(new MarkerOptions().position(lidicka).title("M 1"));
-        map.addMarker(new MarkerOptions().position(tugendhad).title("M 2"));
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(lidicka, 12));
+        if (district.getCoords() == null){
+            return;
+        }
+
+
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        LatLng tmp = null;
+        for (List<Float> coord : district.getCoords()) {
+            tmp = new LatLng(coord.get(1), coord.get(0));
+            map.addMarker(new MarkerOptions().position(tmp).title("District"));
+            builder.include(tmp);
+        }
+
+        if (district.getCoords().size() == 1){
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(tmp, 10));
+        }
+        else {
+            int width = getResources().getDisplayMetrics().widthPixels;
+            int height = (int) (getResources().getDisplayMetrics().heightPixels * .6);
+            int padding = (int) (width * 0.2);
+            map.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), width, height, padding));
+        }
 
     }
 

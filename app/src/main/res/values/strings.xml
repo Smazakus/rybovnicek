@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Rybovnicek</string>
     <string name="getDistricts">Nejbližší revíry</string>
+    <string name="district_name">Jméno revíru</string>
+    <string name="ev_number">Ev. číslo: %s</string>
+    <string name="detail">Detail revíru</string>
+    <string name="show_spoil">Zobrazit úlovky</string>
+    <string name="add_fish">Přidat úlovek</string>
 </resources>
