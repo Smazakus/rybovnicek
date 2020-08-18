@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DistrictActivity" />
-
+        <activity android:name=".FishListActivity" />
     </application>
 
 </manifest>

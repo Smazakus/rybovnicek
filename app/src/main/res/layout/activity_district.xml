@@ -67,6 +67,7 @@
             android:id="@+id/btnSpoil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="showFishList"
             android:text="@string/show_spoil" />
 
         <Button
