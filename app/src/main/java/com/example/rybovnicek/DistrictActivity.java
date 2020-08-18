@@ -89,6 +89,19 @@ public class DistrictActivity extends AppCompatActivity implements OnMapReadyCal
         }
     }
 
+    public void addFish(View v) {
+        if (district != null) {
+            try {
+                String formattedDistrictNumber = district.getRegNumber().replaceAll("\\s+", "");
+                int dNumber = Integer.parseInt(formattedDistrictNumber);
+                Intent i = new Intent(this, FishFormActivity.class);
+                i.putExtra("districtNumber", dNumber);
+                i.putExtra("districtName", district.getName());
+                startActivity(i);
+            } catch (NumberFormatException nfe){ }
+        }
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

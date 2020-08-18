@@ -6,4 +6,11 @@
     <string name="detail">Detail revíru</string>
     <string name="show_spoil">Zobrazit úlovky</string>
     <string name="add_fish">Přidat úlovek</string>
+    <string name="new_fish">Přidání úlovku</string>
+    <string name="form_districtName">Revír: %s</string>
+    <string name="fish_type">Druh:</string>
+    <string name="fish_length">Míra:</string>
+    <string name="date_hint">Datum</string>
+    <string name="type_hint">Druh ryby</string>
+    <string name="length_hint">Míra (cm)</string>
 </resources>

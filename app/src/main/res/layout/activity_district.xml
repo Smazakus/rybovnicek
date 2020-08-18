@@ -74,6 +74,7 @@
             android:id="@+id/btnAddFish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="addFish"
             android:text="@string/add_fish" />
     </LinearLayout>
 
