@@ -1,6 +1,7 @@
 package com.example.rybovnicek;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,15 +13,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,10 +34,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private static final int REQUEST_LOCATION = 1;
-    TextView tvLocation;
     Button btnDistricts;
     ProgressBar progress;
     LocationManager locationManager;
@@ -58,11 +53,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvLocation = (TextView) findViewById(R.id.tvPosition);
-        btnDistricts = (Button) findViewById(R.id.btnDistricts);
-        progress = (ProgressBar) findViewById(R.id.pbLoad);
+        btnDistricts = findViewById(R.id.btnDistricts);
+        progress = findViewById(R.id.pbLoad);
 
-        this.districts = (RecyclerView) findViewById(R.id.listDistricts);
+        this.districts = findViewById(R.id.listDistricts);
         districts.addItemDecoration(new DividerItemDecoration(districts.getContext(), DividerItemDecoration.VERTICAL));
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
@@ -145,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
                 double longi = locationGPS.getLongitude();
                 latitude = String.valueOf(lat);
                 longitude = String.valueOf(longi);
-                tvLocation.setText("Your Location: " + "\n" + "Latitude: " + latitude + "\n" + "Longitude: " + longitude);
                 return locationGPS;
             } else {
                 Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
