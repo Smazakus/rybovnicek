@@ -4,15 +4,21 @@ import java.io.Serializable;
 
 public class Fish implements Serializable {
 
+    private int id;
     private long date;
     private String name;
     private int length;
 
-    public Fish(int date, String name, int length) {
+    public Fish(int id, int date, String name, int length) {
+        this.id = id;
         this.date = date;
         this.name = name;
         this.length = length;
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public long getDate() {
         return date;

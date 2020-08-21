@@ -32,7 +32,6 @@ public class DistrictActivity extends AppCompatActivity implements OnMapReadyCal
     District district;
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
-    private static final String TAG = "DistrictActivity";
 
 
     @Override
@@ -84,6 +83,7 @@ public class DistrictActivity extends AppCompatActivity implements OnMapReadyCal
                 int dNumber = Integer.parseInt(formattedDistrictNumber);
                 Intent i = new Intent(this, FishListActivity.class);
                 i.putExtra("districtNumber", dNumber);
+                i.putExtra("districtName", district.getName());
                 startActivity(i);
             } catch (NumberFormatException nfe){ }
         }
@@ -138,7 +138,6 @@ public class DistrictActivity extends AppCompatActivity implements OnMapReadyCal
         if (district.getCoords() == null){
             return;
         }
-
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         LatLng tmp = null;

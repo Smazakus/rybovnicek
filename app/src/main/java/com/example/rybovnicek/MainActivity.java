@@ -13,6 +13,7 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,10 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_LOCATION = 1;
     TextView tvLocation;
     Button btnDistricts;
-    ScrollView svDistrict;
-    LinearLayout svDistrictsLlay;
+    ProgressBar progress;
     LocationManager locationManager;
-    ConstraintLayout screen;
     String latitude, longitude;
 
     private RecyclerView districts;
@@ -61,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         tvLocation = (TextView) findViewById(R.id.tvPosition);
         btnDistricts = (Button) findViewById(R.id.btnDistricts);
+        progress = (ProgressBar) findViewById(R.id.pbLoad);
 
         this.districts = (RecyclerView) findViewById(R.id.listDistricts);
         districts.addItemDecoration(new DividerItemDecoration(districts.getContext(), DividerItemDecoration.VERTICAL));
@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadDistrictsByLocation(Location location) {
 
-        String url = "https://sycakovo.krumpac.net/findDistrict/?lat=" + String.valueOf(location.getLatitude()) + "&lon=" + String.valueOf(location.getLongitude());
+        progress.setVisibility(View.VISIBLE);
+        final String url = "https://sycakovo.krumpac.net/findDistrict/?lat=" + String.valueOf(location.getLatitude()) + "&lon=" + String.valueOf(location.getLongitude());
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<District> list = gson.fromJson(response, listDistrictType);
                 districtList.addAll(list);
                 adapter.notifyDataSetChanged();
+                progress.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override

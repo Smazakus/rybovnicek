@@ -13,4 +13,14 @@
     <string name="date_hint">Datum</string>
     <string name="type_hint">Druh ryby</string>
     <string name="length_hint">Míra (cm)</string>
+    <string name="fish_update">Upravit</string>
+    <string name="fish_remove">Odstranit</string>
+    <string name="fish_menu_title">Vyberte akci</string>
+    <string name="form_update">Upravit úlovek</string>
+    <string name="distance">%.2f km</string>
+    <string name="cmLength">%d cm</string>
+    <string name="remove_fish_title">Odstranit úlovek</string>
+    <string name="romve_fish_text">Opravdu chcete odstranit úlovek %s - %d cm?</string>
+    <string name="empty_list">Žádný záznam</string>
+    <string name="fish_list_title">Seznam úlovků - %s</string>
 </resources>
