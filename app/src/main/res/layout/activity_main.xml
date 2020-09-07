@@ -5,7 +5,8 @@
     android:id="@+id/clScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:fitsSystemWindows="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clControl"
@@ -14,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
 
         <Button
             android:id="@+id/btnDistricts"
@@ -27,15 +28,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_preferences" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -61,6 +53,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clControl" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mainToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEmptyDistrictList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_distr_list"
+        android:textColor="@android:color/darker_gray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

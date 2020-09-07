@@ -23,4 +23,17 @@
     <string name="romve_fish_text">Opravdu chcete odstranit úlovek %s - %d cm?</string>
     <string name="empty_list">Žádný záznam</string>
     <string name="fish_list_title">Seznam úlovků - %s</string>
+    <string name="action_settings">action_settings</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="district_header">Moravský rybářský svaz</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Preferences -->
+    <string name="trout">Pstruhové revíry</string>
+    <string name="not_trout">Mimopstruhové revíry</string>
+    <string name="show_trout_distr">Zobrazit pstruhové revíry</string>
+    <string name="show_not_trout_distr">Zobrazit mimopstruhové revíry</string>
+    <string name="empty_distr_list">Nejsou vybrány žádné revíry (nastavení).</string>
 </resources>
