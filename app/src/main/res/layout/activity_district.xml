@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/activityBackground"
+    >
 
     <TextView
         android:id="@+id/tvName"
@@ -13,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/district_name"
         android:textSize="30sp"
+        android:textColor="@color/colorTextHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,6 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="linkToDistrict"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:backgroundTint="@color/colorMainButton"
             android:text="@string/detail" />
 
         <Button
@@ -68,6 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showFishList"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:backgroundTint="@color/colorMainButton"
             android:text="@string/show_spoil" />
 
         <Button
@@ -75,6 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="addFish"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:backgroundTint="@color/colorMainButton"
             android:text="@string/add_fish" />
     </LinearLayout>
 
